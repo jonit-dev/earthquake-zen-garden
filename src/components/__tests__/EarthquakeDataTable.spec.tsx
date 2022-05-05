@@ -24,7 +24,7 @@ describe("<EarthquakeDataTable/>", () => {
     expect(EQItem.length > 0).toBeTruthy();
   });
 
-  it("should sort by title, when clicking on Title th (toggle behaviour)", () => {
+  it("should sort by title, when clicking on Title th (toggle behavior)", () => {
     const titleTH = screen.getByTestId("EQ-data-title-th");
 
     fireEvent.click(titleTH);
