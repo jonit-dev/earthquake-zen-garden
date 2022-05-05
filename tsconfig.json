@@ -22,7 +22,9 @@
       "@app/components/*": ["components/*"],
       "@app/constants/*": ["constants/*"],
       "@app/libs/*": ["libs/*"],
+      "@app/types/*": ["types/*"],
       "@app/pages/*": ["pages/*"],
+      "@app/data/*": ["data/*"],
       "@app/store/*": ["store/*"],
       "@public/*": ["../public/*"]
     }

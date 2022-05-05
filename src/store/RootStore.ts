@@ -1,13 +1,13 @@
-import { TestStore } from "./TestStore";
+import { EarthquakeDataStore } from "./EarthquakeDataStore";
 
 export class RootStore {
-  public testStore: TestStore;
+  public earthquakeDataStore: EarthquakeDataStore;
 
   constructor() {
-    this.testStore = new TestStore(this);
+    this.earthquakeDataStore = new EarthquakeDataStore(this);
   }
 }
 
 export const rootStore = new RootStore();
 
-export const testStore = rootStore.testStore;
+export const earthquakeDataStore = rootStore.earthquakeDataStore;
