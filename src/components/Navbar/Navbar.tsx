@@ -1,5 +1,4 @@
-import { uiColors } from "@app/constants/ui";
-import { Center } from "@app/constants/uiStructure";
+import { uiBreakpoints, uiColors } from "@app/constants/ui";
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -8,23 +7,35 @@ export const Navbar: React.FC = () => {
   return (
     <NavBar role="navigation" aria-label="main navigation">
       <NavBarStart>
-        <Center>
-          <Link to="/" className="navbar-item">
-            <Logo src="/images/logo.svg" alt="App logo" />
-          </Link>
-        </Center>
+        <Link to="/" className="navbar-item">
+          <Logo src="/images/logo.svg" alt="App logo" />
+        </Link>
       </NavBarStart>
 
-      <NavBarMiddle></NavBarMiddle>
+      <NavBarMiddle>
+        <Title>Earthquake Zen Garden</Title>
+      </NavBarMiddle>
 
       <NavBarEnd>
         <Link to="/profile/sally">
-          <strong>Welcome Sally</strong>
+          <strong>Welcome, Sally</strong>
         </Link>
       </NavBarEnd>
     </NavBar>
   );
 };
+
+const Title = styled.div`
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: ${uiColors.dark};
+  text-align: center;
+  width: 100%;
+
+  @media screen and (min-width: ${uiBreakpoints.md}) {
+    font-size: 1.5rem;
+  }
+`;
 
 const NavBar = styled.nav`
   background-color: ${uiColors.white};
@@ -33,31 +44,47 @@ const NavBar = styled.nav`
   position: sticky;
   top: 0;
   left: 0;
-
   display: flex;
-  flex-wrap: wrap;
 
-  * {
-    border: 1px solid #f00 !important;
-    box-sizing: border-box;
+  @media screen and (min-width: ${uiBreakpoints.md}) {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-  padding-left: 1rem;
-  padding-right: 1rem;
 `;
 
 const NavBarStart = styled.div`
-  flex: 10% 0 0;
+  flex: 25%;
+  display: flex;
+  align-items: center;
+
+  justify-content: flex-start;
+
+  @media screen and (max-width: ${uiBreakpoints.md}) {
+    justify-content: center;
+  }
 `;
 
 const NavBarMiddle = styled.div`
   flex: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const NavBarEnd = styled.div`
-  flex: 30% 0 0;
+  flex: 25%;
+
+  color: ${uiColors.dark};
+  font-size: 1rem;
+
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
+
+  @media screen and (max-width: ${uiBreakpoints.md}) {
+    justify-content: center;
+    font-size: 0.8rem;
+  }
 `;
 
 const Logo = styled.img``;
