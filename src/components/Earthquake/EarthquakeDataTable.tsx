@@ -46,13 +46,16 @@ export const EarthquakeDataTable: React.FC = observer(() => {
     <Table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth center">
       <thead>
         <tr>
-          <th onClick={() => onSortData("title")}>
+          <th
+            data-testid="EQ-data-title-th"
+            onClick={() => onSortData("title")}
+          >
             Title <Icon name="fas fa-sort"></Icon>
           </th>
-          <th onClick={() => onSortData("mag")}>
+          <th data-testid="EQ-data-mag-th" onClick={() => onSortData("mag")}>
             Magnitude <Icon name="fas fa-sort"></Icon>
           </th>
-          <th onClick={() => onSortData("time")}>
+          <th data-testid="EQ-data-time-th" onClick={() => onSortData("time")}>
             Time <Icon name="fas fa-sort"></Icon>
           </th>
         </tr>

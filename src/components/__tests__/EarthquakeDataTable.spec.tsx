@@ -1,5 +1,5 @@
 import { earthquakeDataStore } from "@app/store/RootStore";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 import { EarthquakeDataTable } from "../Earthquake/EarthquakeDataTable";
@@ -10,15 +10,27 @@ describe("<EarthquakeDataTable/>", () => {
 
   const history = createMemoryHistory();
 
-  render(
-    <Router location={history.location} navigator={history}>
-      <EarthquakeDataTable />
-    </Router>
-  );
+  beforeEach(() => {
+    render(
+      <Router location={history.location} navigator={history}>
+        <EarthquakeDataTable />
+      </Router>
+    );
+  });
 
-  it("should properly load Earthquake information", async () => {
-    const EQItem = await screen.getAllByTestId("EQ-data-item");
+  it("should properly load Earthquake information", () => {
+    const EQItem = screen.getAllByTestId("EQ-data-item");
 
     expect(EQItem.length > 0).toBeTruthy();
+  });
+
+  it("should sort by title, when clicking on Title th", () => {
+    const titleTH = screen.getByTestId("EQ-data-title-th");
+
+    fireEvent.click(titleTH);
+
+    const titleData = earthquakeDataStore.data?.features[0].properties.title;
+
+    expect(titleData === "M 0.5 - 11km NE of Aguanga, CA").toBeTruthy();
   });
 });
