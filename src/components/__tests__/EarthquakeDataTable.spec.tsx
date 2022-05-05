@@ -1,12 +1,24 @@
+import { earthquakeDataStore } from "@app/store/RootStore";
 import { render, screen } from "@testing-library/react";
+import { createMemoryHistory } from "history";
+import { Router } from "react-router-dom";
 import { EarthquakeDataTable } from "../Earthquake/EarthquakeDataTable";
+import { EQDataMock } from "../mock/EQDataMock";
 
 describe("<EarthquakeDataTable/>", () => {
-  render(<EarthquakeDataTable />);
+  earthquakeDataStore.setData(EQDataMock);
 
-  it("should properly load Earthquake information", () => {
-    const EQItem = screen.getByTestId("EQ-data-item");
+  const history = createMemoryHistory();
 
-    expect(EQItem).toBeInTheDocument();
+  render(
+    <Router location={history.location} navigator={history}>
+      <EarthquakeDataTable />
+    </Router>
+  );
+
+  it("should properly load Earthquake information", async () => {
+    const EQItem = await screen.getAllByTestId("EQ-data-item");
+
+    expect(EQItem.length > 0).toBeTruthy();
   });
 });

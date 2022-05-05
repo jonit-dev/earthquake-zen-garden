@@ -8,13 +8,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Icon } from "../Icon";
 
-interface IProps {}
-
 interface ISortDirections {
   [prop: string]: EQSortTypes;
 }
 
-export const EarthquakeDataTable: React.FC<IProps> = observer((props) => {
+export const EarthquakeDataTable: React.FC = observer(() => {
   const [sortDirections, setSortDirections] = useState<ISortDirections>({
     title: "asc",
     mag: "asc",

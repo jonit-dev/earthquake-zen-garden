@@ -13,7 +13,11 @@ export class EarthquakeDataStore {
   }
 
   public loadData() {
-    this.data = EQData.data;
+    this.setData(EQData.data);
+  }
+
+  public setData(data: IEarthquakeData) {
+    this.data = data;
   }
 
   public sortDate(attr: string, type: EQSortTypes) {
