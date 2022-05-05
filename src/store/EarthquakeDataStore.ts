@@ -18,7 +18,7 @@ export class EarthquakeDataStore {
 
   public sortDate(attr: string, type: EQSortTypes) {
     console.log(`sorting by ${attr} - ${type}`);
-    const sortedData = _.sortBy(
+    const sortedData = _.orderBy(
       this.data?.features,
       [`properties.${attr}`],
       [type]
