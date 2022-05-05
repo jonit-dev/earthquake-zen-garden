@@ -24,7 +24,7 @@ describe("<EarthquakeDataTable/>", () => {
     expect(EQItem.length > 0).toBeTruthy();
   });
 
-  it("should sort by title, when clicking on Title th", () => {
+  it("should sort by title, when clicking on Title th (toggle behaviour)", () => {
     const titleTH = screen.getByTestId("EQ-data-title-th");
 
     fireEvent.click(titleTH);
@@ -32,5 +32,14 @@ describe("<EarthquakeDataTable/>", () => {
     const titleData = earthquakeDataStore.data?.features[0].properties.title;
 
     expect(titleData === "M 0.5 - 11km NE of Aguanga, CA").toBeTruthy();
+
+    fireEvent.click(titleTH);
+
+    const updatedTitleData =
+      earthquakeDataStore.data?.features[0].properties.title;
+
+    expect(
+      updatedTitleData === "M 1.2 - 3km ENE of The Geysers, CA"
+    ).toBeTruthy();
   });
 });
