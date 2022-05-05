@@ -18,6 +18,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "baseUrl": "./src",
+    "types": ["node", "jest", "@testing-library/jest-dom"],
     "paths": {
       "@app/components/*": ["components/*"],
       "@app/constants/*": ["constants/*"],

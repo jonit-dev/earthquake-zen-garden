@@ -23,7 +23,7 @@ export const EarthquakeDataTable: React.FC<IProps> = observer((props) => {
 
   const onRenderEQData = () => {
     return earthquakeDataStore?.data?.features.map((data) => (
-      <tr key={data.id}>
+      <tr key={data.id} data-testid="EQ-data-item">
         <td>
           <Link to={`/details/${data.id}`}>{data.properties.title}</Link>
         </td>

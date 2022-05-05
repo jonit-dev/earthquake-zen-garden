@@ -22,7 +22,7 @@ export const Navbar: React.FC = observer(() => {
 
       <NavBarEnd>
         <Link to={`/profile`}>
-          <strong>Welcome, Sally</strong>
+          <strong>Welcome, {user?.firstName}</strong>
         </Link>
       </NavBarEnd>
     </NavBar>
