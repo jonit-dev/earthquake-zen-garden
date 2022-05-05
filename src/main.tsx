@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import "bulma/css/bulma.css";
-import { AppRouter } from "./pages/AppRouter";
+import { App } from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AppRouter />
+    <App />
   </React.StrictMode>
 );

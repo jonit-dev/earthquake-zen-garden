@@ -1,43 +1,63 @@
+import { uiColors } from "@app/constants/ui";
+import { Center } from "@app/constants/uiStructure";
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-interface IProps {}
-
-export const Navbar: React.FC<IProps> = (props) => {
+export const Navbar: React.FC = () => {
   return (
-    <NavBar
-      className="navbar has-shadow"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div className="navbar-brand">
-        <Link to="/">
-          <Logo src="/images/logo.png" alt="Invoicr logo" />
+    <NavBar role="navigation" aria-label="main navigation">
+      <NavBarStart>
+        <Center>
+          <Link to="/" className="navbar-item">
+            <Logo src="/images/logo.svg" alt="App logo" />
+          </Link>
+        </Center>
+      </NavBarStart>
+
+      <NavBarMiddle></NavBarMiddle>
+
+      <NavBarEnd>
+        <Link to="/profile/sally">
+          <strong>Welcome Sally</strong>
         </Link>
-        <a
-          role="button"
-          className="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-        >
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-        </a>
-      </div>
+      </NavBarEnd>
     </NavBar>
   );
 };
 
 const NavBar = styled.nav`
+  background-color: ${uiColors.white};
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  height: 3.5rem;
   position: sticky;
   top: 0;
   left: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  * {
+    border: 1px solid #f00 !important;
+    box-sizing: border-box;
+  }
+  padding-left: 1rem;
+  padding-right: 1rem;
 `;
 
-const Logo = styled.img`
-  object-fit: contain;
-  height: 5rem;
-  margin-left: 1rem;
+const NavBarStart = styled.div`
+  flex: 10% 0 0;
 `;
+
+const NavBarMiddle = styled.div`
+  flex: auto;
+`;
+
+const NavBarEnd = styled.div`
+  flex: 30% 0 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+const Logo = styled.img``;

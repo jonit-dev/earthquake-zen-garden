@@ -1,26 +1,19 @@
-import { testHelper } from "@app/libs/TestHelper";
-import React, { useEffect } from "react";
-import styled from "styled-components";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Navbar } from "./components/Navbar/Navbar";
+import { DetailPage } from "./pages/DetailPage";
+import { HomePage } from "./pages/HomePage";
+import { ProfilePage } from "./pages/ProfilePage";
 
-interface IProps {}
-
-export const App: React.FC<IProps> = (props) => {
-  useEffect(() => {
-    testHelper.sayHello();
-  }, []);
-
+export const App: React.FC = () => {
   return (
-    <Container>
-      <section className="section">
-        <div className="container">
-          <h1 className="title">Hello World</h1>
-          <p className="subtitle">
-            My first website with <strong>Bulma</strong>!
-          </p>
-        </div>
-      </section>
-    </Container>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/profile/:id" element={<ProfilePage />} />
+        <Route path="/details/:id" element={<DetailPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
-
-const Container = styled.div``;
