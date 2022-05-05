@@ -38,6 +38,6 @@ const NavBar = styled.nav`
 
 const Logo = styled.img`
   object-fit: contain;
-  height: 4rem;
+  height: 5rem;
   margin-left: 1rem;
 `;
