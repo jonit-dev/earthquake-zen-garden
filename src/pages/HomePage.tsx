@@ -7,7 +7,7 @@ interface IProps {}
 export const HomePage: React.FC<IProps> = (props) => {
   return (
     <Page>
-      <h1>Main page</h1>
+      <h1>USGS All Earthquakes, Past Hour</h1>
 
       <strong>Visit my </strong>
       <Link to="/profile/sally">profile</Link>
