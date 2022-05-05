@@ -6,11 +6,12 @@ import { uiTypography } from "./constants/ui";
 import { DetailPage } from "./pages/DetailPage";
 import { HomePage } from "./pages/HomePage";
 import { ProfilePage } from "./pages/ProfilePage";
-import { earthquakeDataStore } from "./store/RootStore";
+import { earthquakeDataStore, userStore } from "./store/RootStore";
 
 export const App: React.FC = () => {
   useEffect(() => {
     earthquakeDataStore.loadData();
+    userStore.loadProfile();
   }, []);
 
   return (
@@ -19,7 +20,7 @@ export const App: React.FC = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/details/:id" element={<DetailPage />} />
         </Routes>
       </BrowserRouter>

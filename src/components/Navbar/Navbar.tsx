@@ -1,9 +1,13 @@
 import { uiBreakpoints, uiColors } from "@app/constants/ui";
+import { userStore } from "@app/store/RootStore";
+import { observer } from "mobx-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Navbar: React.FC = () => {
+export const Navbar: React.FC = observer(() => {
+  const { user } = userStore;
+
   return (
     <NavBar role="navigation" aria-label="main navigation">
       <NavBarStart>
@@ -17,13 +21,13 @@ export const Navbar: React.FC = () => {
       </NavBarMiddle>
 
       <NavBarEnd>
-        <Link to="/profile/sally">
+        <Link to={`/profile`}>
           <strong>Welcome, Sally</strong>
         </Link>
       </NavBarEnd>
     </NavBar>
   );
-};
+});
 
 const Title = styled.div`
   font-size: 0.8rem;
