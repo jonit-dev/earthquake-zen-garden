@@ -17,4 +17,8 @@ const Container = styled.div`
   @media screen and (min-width: ${uiBreakpoints.md}) {
     max-width: 50%;
   }
+
+  .title-small {
+    font-size: 1.25rem;
+  }
 `;

@@ -4,6 +4,7 @@ import { EQSortTypes } from "@app/types/EarthquakeDataTypes";
 import dayjs from "dayjs";
 import { observer } from "mobx-react";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Icon } from "../Icon";
 
@@ -23,7 +24,9 @@ export const EarthquakeDataTable: React.FC<IProps> = observer((props) => {
   const onRenderEQData = () => {
     return earthquakeDataStore?.data?.features.map((data) => (
       <tr key={data.id}>
-        <td>{data.properties.title}</td>
+        <td>
+          <Link to={`/details/${data.id}`}>{data.properties.title}</Link>
+        </td>
         <td>{data.properties.mag}</td>
         <td>{dayjs(data.properties.time).format(EQ_DATE_FORMAT)}</td>
       </tr>
